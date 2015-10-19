@@ -25,6 +25,7 @@
 
 		<!-- Hibernate / JPA -->
 		<hibernate.version>5.0.2.Final</hibernate.version>
+		<hibernate-validator.version>5.2.2.Final</hibernate-validator.version>
 
 		<!-- Logging -->
 		<logback.version>1.0.13</logback.version>
@@ -96,7 +97,21 @@
 			<version>${spring-data-jpa.version}</version>
 		</dependency>
 
-	<!-- Mysql -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate-validator.version}</version>
+		</dependency>
+
+
+
+		<!-- Mysql -->
 
 		<dependency>
 			<groupId>mysql</groupId>
