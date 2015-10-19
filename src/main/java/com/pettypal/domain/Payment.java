@@ -59,4 +59,5 @@ public class Payment extends BaseEntityAudit {
 		this.payment_date = payment_date;
 	}
 
+
 }
