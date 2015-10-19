@@ -3,9 +3,9 @@ package com.pettypal.repository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.pettypal.domain.Payment;
+import com.pettypal.domain.UserPayment;;
 
 @Repository
-public interface PaymentRepository extends CrudRepository<Payment, Long> {
+public interface UserPaymentRepository extends CrudRepository<UserPayment, Long> {
 
 }
