@@ -1,0 +1,1 @@
+<p>&copy; PettyPal 2015</p>

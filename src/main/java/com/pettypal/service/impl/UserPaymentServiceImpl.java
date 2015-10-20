@@ -26,12 +26,12 @@ public class UserPaymentServiceImpl implements UserPaymentService {
 		
 	}
 
-	public UserPayment getByPaymentID(long paymentId) {
-		return userpaymentRepo.getByPaymentId(paymentId);
-	}
-
-	public UserPayment getByUserID(long userId) {
-		return userpaymentRepo.getByUserId(userId);
-	}
+//	public UserPayment getByPaymentID(long paymentId) {
+//		return userpaymentRepo.getByPaymentId(paymentId);
+//	}
+//
+//	public UserPayment getByUserID(long userId) {
+//		return userpaymentRepo.getByUserId(userId);
+//	}
 
 }
