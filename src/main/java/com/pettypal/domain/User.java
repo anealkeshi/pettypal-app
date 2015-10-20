@@ -1,13 +1,17 @@
 package com.pettypal.domain;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
-import org.hibernate.annotations.ColumnTransformers;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -40,8 +44,9 @@ public class User extends BaseEntityAudit {
 	@Convert(converter = LocalDateConverter.class)
 	private LocalDateTime birthDate;
 
+	@OneToOne(cascade=CascadeType.ALL)
+	private Credential credential;
 	
-
 	public String getFirstName() {
 		return firstName;
 	}
