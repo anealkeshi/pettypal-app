@@ -10,8 +10,10 @@ public interface UserPaymentService {
 	
 	public void save(UserPayment userpayment);
 	
-	public UserPayment getByPaymentID(long paymentId);
+	public UserPayment get(long Id);
 	
-	public UserPayment getByUserID(long userId);
+	public List<UserPayment> getByPaymentID(long paymentId);
+	
+	public List<UserPayment> getByUserID(long userId);
 
 }

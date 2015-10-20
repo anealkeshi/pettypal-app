@@ -17,7 +17,7 @@ public class Payment extends BaseEntityAudit {
 	private double tip;
 
 	@Convert(converter = LocalDateConverter.class)
-	private LocalDateTime payment_date;
+	private LocalDateTime paymentDate;
 
 	public String getDescription() {
 		return description;
@@ -51,12 +51,12 @@ public class Payment extends BaseEntityAudit {
 		this.tip = tip;
 	}
 
-	public LocalDateTime getPayment_date() {
-		return payment_date;
+	public LocalDateTime getPaymentDate() {
+		return paymentDate;
 	}
 
-	public void setPayment_date(LocalDateTime payment_date) {
-		this.payment_date = payment_date;
+	public void setPaymentDate(LocalDateTime paymentDate) {
+		this.paymentDate = paymentDate;
 	}
 
 

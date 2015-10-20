@@ -15,19 +15,19 @@ import com.pettypal.service.PaymentService;
 public class PaymentServiceImpl implements PaymentService {
 
 	@Autowired
-	PaymentRepository paymentRepo;
+	PaymentRepository paymentRepository;
 	
 	public List<Payment> getAll() {
-		return (List<Payment>) paymentRepo.findAll();
+		return (List<Payment>) paymentRepository.findAll();
 	}
 
 	public void save(Payment payment) {
-		paymentRepo.save(payment);
+		paymentRepository.save(payment);
 		
 	}
 
-//	public Payment get(long paymentId) {
-//		return paymentRepo.getPaymentById(paymentId);
-//	}
+	public Payment get(long paymentId) {
+		return paymentRepository.getPaymentById(paymentId);
+	}
 
 }

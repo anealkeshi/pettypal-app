@@ -15,23 +15,27 @@ import com.pettypal.service.UserPaymentService;
 public class UserPaymentServiceImpl implements UserPaymentService {
 
 	@Autowired
-	UserPaymentRepository userpaymentRepo;
+	UserPaymentRepository userpaymentRepository;
 	
 	public List<UserPayment> getAll() {
-		return (List<UserPayment>) userpaymentRepo.findAll();
+		return (List<UserPayment>) userpaymentRepository.findAll();
 	}
 
 	public void save(UserPayment payment) {
-		userpaymentRepo.save(payment);
+		userpaymentRepository.save(payment);
 		
 	}
 
-	public UserPayment getByPaymentID(long paymentId) {
-		return userpaymentRepo.getByPaymentId(paymentId);
+	public List<UserPayment> getByPaymentID(long paymentId) {
+		return userpaymentRepository.getByPaymentId(paymentId);
 	}
 
-	public UserPayment getByUserID(long userId) {
-		return userpaymentRepo.getByUserId(userId);
+	public List<UserPayment> getByUserID(long userId) {
+		return userpaymentRepository.getByUserId(userId);
+	}
+
+	public UserPayment get(long Id) {
+		return userpaymentRepository.get(Id);
 	}
 
 }

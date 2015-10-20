@@ -16,11 +16,11 @@ public class PaymentHistory extends BaseEntityAudit {
 	private static final long serialVersionUID = 7166895796187552326L;
 
 	@OneToOne(fetch=FetchType.EAGER, cascade= CascadeType.ALL)
-	@JoinColumn(name="user_id")
+	@JoinColumn(name="user_id", referencedColumnName = "id")
 	private User user;
 
 	@OneToOne(fetch=FetchType.EAGER, cascade= CascadeType.ALL)
-	@JoinColumn(name="payment_id")
+	@JoinColumn(name="payment_id", referencedColumnName = "id")
 	private Payment payment;
 	
 	@Digits(integer=15,fraction=2)
