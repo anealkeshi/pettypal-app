@@ -1,15 +1,22 @@
 package com.pettypal.app;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+
+
 @Controller
 public class LoginController {
 
+	private static final Log logger = LogFactory.getLog(LoginController.class);
+	
 	@RequestMapping(value="/login", method = RequestMethod.GET)
 	public String login() {
+		logger.info("return login form");
  		return "login";
 	}
  
