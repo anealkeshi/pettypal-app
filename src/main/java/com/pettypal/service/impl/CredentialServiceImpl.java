@@ -3,8 +3,8 @@ package com.pettypal.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-//import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,10 +21,10 @@ public class CredentialServiceImpl implements CredentialService {
 
 	public void save(Credential credential) {
 		
-//		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();   		
-//  		String encodedPassword = passwordEncoder.encode(credential.getPassword());
-//  		credential.setPassword(encodedPassword);
-//  		
+		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();   		
+  		String encodedPassword = passwordEncoder.encode(credential.getPassword());
+  		credential.setPassword(encodedPassword);
+  		
   		credentialRepository.save(credential);
 	}
 
