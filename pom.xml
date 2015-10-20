@@ -22,11 +22,16 @@
 		<!-- Spring -->
 		<spring-framework.version>4.2.2.RELEASE</spring-framework.version>
 		<spring-data-jpa.version>1.9.0.RELEASE</spring-data-jpa.version>
+		<!-- <spring-security.version>3.2.5.RELEASE</spring-security.version> -->
+		
 
 		<!-- Hibernate / JPA -->
 		<hibernate.version>5.0.2.Final</hibernate.version>
 		<hibernate-validator.version>5.2.2.Final</hibernate-validator.version>
 
+		<!-- Apache - Tile -->
+		<apache-tile.version>3.0.3</apache-tile.version>
+		
 		<!-- Logging -->
 		<logback.version>1.0.13</logback.version>
 		<slf4j.version>1.7.5</slf4j.version>
@@ -37,6 +42,24 @@
 	</properties>
 
 	<dependencies>
+	
+	<!-- Spring Security -->
+	<!-- <dependency>
+  		<groupId>org.springframework.security</groupId>
+  		<artifactId>spring-security-config</artifactId>
+  		<version>${spring-security.version}</version>
+  		<exclusions>
+  			<exclusion>
+  				<artifactId>spring-asm</artifactId>
+  				<groupId>org.springframework</groupId>
+  			</exclusion>
+  		</exclusions>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.springframework.security</groupId>
+  		<artifactId>spring-security-web</artifactId>
+  		<version>${spring-security.version}</version>
+  	</dependency> -->
 		<!-- Spring MVC -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -118,6 +141,13 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.34</version>
 		</dependency>
+	
+		<!-- apache Tile -->
+  	  	<dependency>
+  		<groupId>org.apache.tiles</groupId>
+  		<artifactId>tiles-extras</artifactId>
+  		<version>${apache-tile.version}</version>
+  	</dependency>
 
 		<!-- Test Artifacts -->
 		<dependency>
