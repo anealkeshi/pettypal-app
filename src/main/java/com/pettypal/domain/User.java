@@ -1,13 +1,12 @@
 package com.pettypal.domain;
 
 import java.time.LocalDateTime;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
@@ -17,36 +16,32 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import com.pettypal.domain.converters.LocalDateConverter;
 
-@Entity(name="user")
+@Entity(name = "user")
 public class User extends BaseEntityAudit {
-	
-	
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = -4200665527938734620L;
 
 	@NotEmpty
 	private String firstName;
-	
+
 	@NotEmpty
 	private String lastName;
-	
+
 	@NotEmpty
-	@Pattern(regexp="^\\d{3}-^\\d{3}-^\\d{4}", message="{0} invalid input format")
+	@Pattern(regexp = "^\\d{3}-^\\d{3}-^\\d{4}", message = "{0} invalid input format")
 	private String phonenumber;
-	
+
 	@Email
 	private String email;
-	
+
 	@Past
 	@Convert(converter = LocalDateConverter.class)
 	private LocalDateTime birthDate;
 
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "credential_id", referencedColumnName = "id")
 	private Credential credential;
-	
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -86,8 +81,5 @@ public class User extends BaseEntityAudit {
 	public void setBirthDate(LocalDateTime birthDate) {
 		this.birthDate = birthDate;
 	}
-	
-	
-	
-	
+
 }
