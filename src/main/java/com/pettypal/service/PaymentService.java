@@ -10,6 +10,6 @@ public interface PaymentService {
 	
 	public void save(Payment payment);
 	
-//	public Payment get(long paymentId);
+	public Payment get(long paymentId);
 
 }

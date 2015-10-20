@@ -17,7 +17,7 @@ import com.pettypal.service.CredentialService;
 public class CredentialServiceImpl implements CredentialService {
 
 	@Autowired
-	CredentialRepository credentialRepo;
+	CredentialRepository credentialRepository;
 
 	public void save(Credential credential) {
 		
@@ -25,12 +25,12 @@ public class CredentialServiceImpl implements CredentialService {
 //  		String encodedPassword = passwordEncoder.encode(credential.getPassword());
 //  		credential.setPassword(encodedPassword);
 //  		
-  		credentialRepo.save(credential);
+  		credentialRepository.save(credential);
 	}
 
 	public List<Credential> findAll() {
 		// TODO Auto-generated method stub
-		return (List<Credential>) credentialRepo.findAll();
+		return (List<Credential>) credentialRepository.findAll();
 	}
 
 	
