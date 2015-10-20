@@ -23,7 +23,7 @@ public class Notification extends BaseEntityAudit {
 	@Enumerated(EnumType.STRING)
 	private NotificationStatus status;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.DETACH)
 	@JoinColumn(name = "payment_id", referencedColumnName = "id")
 	private Payment payment;
 	
