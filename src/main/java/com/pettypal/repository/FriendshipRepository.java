@@ -12,7 +12,7 @@ import com.pettypal.domain.User;
 @Repository
 public interface FriendshipRepository extends CrudRepository<Friendship, Long> {
 
-	@Query("SELECT f FROM friendship f WHERE f.first_user_id=:userId OR f.second_user_id =:userId)")
+	@Query("SELECT f FROM friendship f WHERE f.firstUser=:userId OR f.secondUser =:userId)")
 	public List<Friendship> findAllFriendsips(long userId);
 
 }
