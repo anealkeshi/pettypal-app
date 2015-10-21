@@ -11,8 +11,14 @@ import com.pettypal.domain.User;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
-	
+
 	@Query("SELECT u FROM user u WHERE u.firstName LIKE %:name% OR u.lastName LIKE %:name%")
 	List<User> searchUserByName(@Param("name") String name);
+
+	@Query("SELECT u FROM user u WHERE u.firstName LIKE %:query% OR u.lastName LIKE %:query% OR u.email LIKE %:query% OR u.credential.username LIKE %:query%")
+	List<User> searchUserByNameOrUsernameOrEmail(@Param("query") String nameOrUsernameOrEmail);
+
+	@Query("SELECT u FROM user u WHERE u.credential.username=:username")
+	User findUserByUsername(@Param("username") String username);
 
 }

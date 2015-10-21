@@ -1,12 +1,15 @@
 package com.pettypal.domain;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
@@ -28,17 +31,16 @@ public class User extends BaseEntityAudit {
 	private String lastName;
 
 	@NotEmpty
-	@Pattern(regexp = "^\\d{3}-^\\d{3}-^\\d{4}", message = "{0} invalid input format")
+	//@Pattern(regexp = "^\\d{3}-^\\d{3}-^\\d{4}", message = "{0} invalid input format")
 	private String phonenumber;
 
 	@Email
 	private String email;
 
-	@Past
 	@Convert(converter = LocalDateConverter.class)
 	private LocalDateTime birthDate;
 
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "credential_id", referencedColumnName = "id")
 	private Credential credential;
 
@@ -80,6 +82,14 @@ public class User extends BaseEntityAudit {
 
 	public void setBirthDate(LocalDateTime birthDate) {
 		this.birthDate = birthDate;
+	}
+
+	public Credential getCredential() {
+		return credential;
+	}
+
+	public void setCredential(Credential credential) {
+		this.credential = credential;
 	}
 
 }

@@ -21,8 +21,6 @@
 		<property name="order" value="2" />
 	</bean>
 
-	<mvc:resources  location="/resources/"  mapping="/resource/**"/>
-
 	<bean id="tilesViewResolver"
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="viewClass"
@@ -61,7 +59,9 @@
 		</property>
 	</bean>
 
-	<mvc:resources mapping="/resources/**" location="/resources/"  />
+	
+	<mvc:resources mapping="/images/**" location="/resources/images/" />
+	<mvc:resources mapping="/css/**" location="/resources/css/" />
 
 
 </beans>
