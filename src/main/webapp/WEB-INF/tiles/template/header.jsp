@@ -6,14 +6,15 @@
 
 <div class="header_content">
 	<div class="head_content">
-		<h1>Header Content</h1>
-		<h1>Header Content</h1>
-		<h1>Header Content</h1>
-		<h1>Header Content</h1>
-		<h1>Header Content</h1>
 	</div>
 	
-	<div class="user"> <security:authorize access="isAuthenticated()">
+	
+				
+	<div class="language">
+		Language : <a href="?language=en_US">English</a> | <a
+			href="?language=mn_MN">Mongolia</a>
+			
+			<div style="position: relative; vertical-align: bottom; text-align:right; padding-top:10px"> <security:authorize access="isAuthenticated()">
 					
   					Welcome username :  ${pageContext.request.userPrincipal.name}
   					
@@ -26,10 +27,6 @@
   				
 				</security:authorize>
 				</div>
-				
-	<div class="language">
-		Language : <a href="?language=en_US">English</a> | <a
-			href="?language=mn_MN">Mongolia</a>
 	</div>
 
 

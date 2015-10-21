@@ -8,6 +8,9 @@
 <title>Register New User</title>
 </head>
 <body>
+<div style="width:100%; margin:auto; text-align:center">
+<div style=" padding-left:200px">
+<div style="text-align:left;">
 
 <form:form  modelAttribute="newUser" action="Registration" enctype="multipart/form-data">
 			<fieldset>
@@ -71,7 +74,7 @@
 				<div>
 					<label for="credential.password"><spring:message code="register.credential.password.label"/></label>
 					<div >
-						<form:input id="credential.password" path="credential.password" type="text"/>
+						<form:input id="credential.password" path="credential.password" type="password"/>
 						<form:errors path="credential.password" cssStyle="color:red;"/>
 					</div>
 				</div>
@@ -85,7 +88,8 @@
 				
 			</fieldset>
 		</form:form>
-		
-		
+		</div>
+		</div>
+</div>
 </body>
 </html>

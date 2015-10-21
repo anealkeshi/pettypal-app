@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -21,6 +22,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.pettypal.domain.converters.LocalDateConverter;
@@ -39,13 +41,15 @@ public class User extends BaseEntityAudit {
 	private String lastName;
 
 	@NotEmpty
-	@Pattern(regexp = "^\\d{3}-^\\d{3}-^\\d{4}", message = "{0} invalid input format")
+	@Pattern(regexp = "^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$", message = "{0} invalid input format")
 	private String phonenumber;
 
 	@Email
 	private String email;
-
-	@Convert(converter = LocalDateConverter.class)
+	
+	@NotNull
+ 	@DateTimeFormat(pattern = "MM/dd/yyyy")
+	//@Convert(converter = LocalDateConverter.class)
 	private LocalDateTime birthDate;
 
 	@Valid
