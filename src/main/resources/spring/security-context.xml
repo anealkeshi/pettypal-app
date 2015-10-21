@@ -19,6 +19,9 @@
 
 		<security:intercept-url pattern="/showMessage"
 			access="isAuthenticated()" />
+			
+			<security:intercept-url pattern="/payment"
+			access="isAuthenticated()" />
 
 		<security:form-login login-page="/login"
 			login-processing-url="/postLogin" username-parameter="username"

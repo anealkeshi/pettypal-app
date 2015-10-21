@@ -1,9 +1,13 @@
 package com.pettypal.domain;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 
 import com.pettypal.domain.converters.LocalDateConverter;
 
@@ -15,6 +19,13 @@ public class Payment extends BaseEntityAudit {
 	private double totalAmount;
 	private double tax;
 	private double tip;
+	
+	private User initiator;
+	
+	private int numberOfFriends;
+
+	@OneToMany(mappedBy = "payment")	
+	private List<UserPayment> userPayments;
 
 	@Convert(converter = LocalDateConverter.class)
 	private LocalDateTime paymentDate;
@@ -59,5 +70,28 @@ public class Payment extends BaseEntityAudit {
 		this.paymentDate = paymentDate;
 	}
 
+	public User getInitiator() {
+		return initiator;
+	}
+
+	public void setInitiator(User initiator) {
+		this.initiator = initiator;
+	}
+
+	public List<UserPayment> getUserPayments() {
+		return userPayments;
+	}
+
+	public void setUserPayments(List<UserPayment> userPayments) {
+		this.userPayments = userPayments;
+	}
+
+	public int getNumberOfFriends() {
+		return numberOfFriends;
+	}
+
+	public void setNumberOfFriends(int numberOfFriends) {
+		this.numberOfFriends = numberOfFriends;
+	}
 
 }

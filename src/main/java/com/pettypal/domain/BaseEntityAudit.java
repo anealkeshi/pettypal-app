@@ -23,7 +23,7 @@ public abstract class BaseEntityAudit extends BaseEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdAt;
 
-	@Size(max = 20)
+	//@Size(max = 20)
 	@Column(name = "created_by", length = 20)
 	private long createdBy;
 
@@ -31,7 +31,7 @@ public abstract class BaseEntityAudit extends BaseEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updatedAt;
 
-	@Size(max = 20)
+	//@Size(max = 20)
 	@Column(name = "updated_by", length = 20)
 	private long updatedBy;
 
