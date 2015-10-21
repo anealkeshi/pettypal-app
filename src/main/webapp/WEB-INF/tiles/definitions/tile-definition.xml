@@ -23,6 +23,11 @@
 		<put-attribute name="title" value="Show Message" />
 		<put-attribute name="body" value="/WEB-INF/view/showMessage.jsp" />
 	</definition>
+	
+	<definition name="paymentRequest" extends="baseLayout">
+		<put-attribute name="title" value="Payment Request" />
+		<put-attribute name="body" value="/WEB-INF/view/paymentRequest.jsp" />
+	</definition>
 
 	<definition name="login" extends="baseLayout">
 		<put-attribute name="title" value="Login" />
