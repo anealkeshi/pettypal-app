@@ -10,8 +10,8 @@ import com.pettypal.domain.Payment;
 import com.pettypal.repository.PaymentRepository;
 import com.pettypal.service.PaymentService;
 
-//@Service
-//@Transactional
+@Service
+@Transactional
 public class PaymentServiceImpl implements PaymentService {
 
 	@Autowired
@@ -21,8 +21,8 @@ public class PaymentServiceImpl implements PaymentService {
 		return (List<Payment>) paymentRepository.findAll();
 	}
 
-	public void save(Payment payment) {
-		paymentRepository.save(payment);
+	public Payment save(Payment payment) {
+		return paymentRepository.save(payment);
 		
 	}
 
