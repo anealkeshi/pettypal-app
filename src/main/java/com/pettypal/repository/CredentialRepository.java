@@ -10,5 +10,6 @@ import com.pettypal.domain.Credential;
 @Repository
 public interface CredentialRepository extends CrudRepository<Credential, Long> {
 
-	
+	@Query("Select c from credential c where c.username =:username")
+	Credential getCredentialByUsername(@Param("username") String username);
 }

@@ -1,56 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:security="http://www.springframework.org/schema/security"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
 		http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context.xsd 
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		">
 
-	<security:global-method-security pre-post-annotations="enabled"/>	
-	<!--  Use ControllerAdice for Access denied -->	
+	<security:global-method-security
+		pre-post-annotations="enabled" />
+	<!-- Use ControllerAdice for Access denied -->
 
 	<security:http use-expressions="true">
-	
 
-	<!-- <security:access-denied-handler error-page="/error-forbidden" /> -->
-	
-<security:intercept-url pattern="/showMessage" access="isAuthenticated()"/> 
- 	
- 		<security:form-login  login-page="/login" 
-				login-processing-url="/postLogin"
-				username-parameter="username" 
-				password-parameter="password"
- 			    default-target-url="/welcome"    
-               always-use-default-target="true"   
-               authentication-failure-url="/loginfailed"/>
-         <security:logout logout-success-url="/logout"  logout-url= "/doLogout"/>
-        
-	
+
+		<!-- <security:access-denied-handler error-page="/error-forbidden" /> -->
+
+		<security:intercept-url pattern="/showMessage"
+			access="isAuthenticated()" />
+
+		<security:form-login login-page="/login"
+			login-processing-url="/postLogin" username-parameter="username"
+			password-parameter="password" default-target-url="/welcome"
+			always-use-default-target="true" authentication-failure-url="/loginfailed" />
+		<security:logout logout-success-url="/logout"
+			logout-url="/doLogout" />
+
+
 	</security:http>
-	
-<!-- 
- 	<security:authentication-manager>
-		<security:authentication-provider>
-			<security:password-encoder hash="bcrypt" />
-			<security:jdbc-user-service
-				data-source-ref="dataSource"
-				users-by-username-query="select username,password from credential where username=?"
-				authorities-by-username-query="select username, authority from credential username =?" />
-		</security:authentication-provider>
-	</security:authentication-manager>
- -->
 
+	<bean id="customAuthenticationProvider" class="com.pettypal.custom.CustomAuthenticationProvider" />
 	<security:authentication-manager>
-		<security:authentication-provider>
-			<security:password-encoder hash="plaintext" />
-			<security:user-service>
-				<security:user name="admin" password="admin" authorities="ROLE_ADMIN" />
-				<security:user name="guest" password="guest" authorities="ROLE_USER" />
-			</security:user-service>
-		</security:authentication-provider>
+		<security:authentication-provider
+			ref="customAuthenticationProvider" />
 	</security:authentication-manager>
+
+
 </beans>

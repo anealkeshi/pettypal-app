@@ -7,6 +7,9 @@ import com.pettypal.domain.Credential;
 public interface CredentialService {
 
 	public void save(Credential credential);
+
 	public List<Credential> findAll();
+
+	Credential getCredentialByUsername(String username);
 
 }

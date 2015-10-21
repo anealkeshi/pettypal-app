@@ -20,12 +20,12 @@ public class CredentialServiceImpl implements CredentialService {
 	CredentialRepository credentialRepository;
 
 	public void save(Credential credential) {
-		
-		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();   		
-  		String encodedPassword = passwordEncoder.encode(credential.getPassword());
-  		credential.setPassword(encodedPassword);
-  		
-  		credentialRepository.save(credential);
+
+		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String encodedPassword = passwordEncoder.encode(credential.getPassword());
+		credential.setPassword(encodedPassword);
+
+		credentialRepository.save(credential);
 	}
 
 	public List<Credential> findAll() {
@@ -33,8 +33,8 @@ public class CredentialServiceImpl implements CredentialService {
 		return (List<Credential>) credentialRepository.findAll();
 	}
 
-	
-	
-	
+	public Credential getCredentialByUsername(String username) {
+		return credentialRepository.getCredentialByUsername(username);
+	}
 
 }
