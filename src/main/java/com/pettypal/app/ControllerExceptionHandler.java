@@ -25,7 +25,7 @@ public class ControllerExceptionHandler {
 	        return  "error-forbidden" ;
 	    }
 	  
-	    @ExceptionHandler(value = Exception.class)
+	   // @ExceptionHandler(value = Exception.class)
 	    public ModelAndView defaultErrorHandler(HttpServletRequest req, Exception e) throws Exception {
 	        // If the exception is annotated with @ResponseStatus rethrow it and let
 	        // the framework handle it - like the OrderNotFoundException example

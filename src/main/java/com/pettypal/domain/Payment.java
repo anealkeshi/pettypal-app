@@ -3,11 +3,13 @@ package com.pettypal.domain;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.pettypal.domain.converters.LocalDateConverter;
 
@@ -15,7 +17,10 @@ import com.pettypal.domain.converters.LocalDateConverter;
 public class Payment extends BaseEntityAudit {
 
 	private static final long serialVersionUID = -2661354058637682676L;
-	private String description;
+	
+	@NotEmpty
+	private String description;	
+	
 	private double totalAmount;
 	private double tax;
 	private double tip;
@@ -23,6 +28,9 @@ public class Payment extends BaseEntityAudit {
 	private User initiator;
 	
 	private int numberOfFriends;
+	
+	@Transient
+	private MultipartFile recieptImage;
 
 	@OneToMany(mappedBy = "payment")	
 	private List<UserPayment> userPayments;
@@ -92,6 +100,14 @@ public class Payment extends BaseEntityAudit {
 
 	public void setNumberOfFriends(int numberOfFriends) {
 		this.numberOfFriends = numberOfFriends;
+	}
+
+	public MultipartFile getRecieptImage() {
+		return recieptImage;
+	}
+
+	public void setRecieptImage(MultipartFile recieptImage) {
+		this.recieptImage = recieptImage;
 	}
 
 }

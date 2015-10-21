@@ -8,7 +8,7 @@ public interface PaymentService {
 	
 	public List<Payment> getAll();
 	
-	public void save(Payment payment);
+	public Payment save(Payment payment);
 	
 	public Payment get(long paymentId);
 
