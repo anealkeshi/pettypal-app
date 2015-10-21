@@ -2,6 +2,8 @@ package com.pettypal.domain;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -26,6 +28,7 @@ public class PaymentHistory extends BaseEntityAudit {
 	@Digits(integer=15,fraction=2)
 	private Double amount;
 	
+	@Enumerated(EnumType.STRING)
 	private PaymentType type;
 
 	public User getUser() {
