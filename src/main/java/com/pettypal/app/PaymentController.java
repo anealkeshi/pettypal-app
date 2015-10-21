@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +33,9 @@ public class PaymentController {
 	@Autowired
 	private PaymentService paymentService;
 	
+	@Value("${image.path}")
+	private String path;
+	
 	@RequestMapping(value = {"","/request"}, method = RequestMethod.GET)
 	public String request(@ModelAttribute("newPayment") Payment payment, Principal userPrincipal){
 		System.out.println(userPrincipal.getName());
@@ -56,7 +60,7 @@ public class PaymentController {
 			
 			if(image != null && !image.isEmpty()){
 				try{
-					image.transferTo(new File(rootDirectory + "\\resources\\images\\"+ savedPayment.getId()+".png"));
+					image.transferTo(new File(path + savedPayment.getId()+".png"));
 				}
 				catch(Exception e){
 					throw new UnableToUploadImageException("Image upload failed.");
