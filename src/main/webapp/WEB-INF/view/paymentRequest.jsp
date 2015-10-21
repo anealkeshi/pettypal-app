@@ -62,7 +62,7 @@
 							<form:errors path="numberOfFriends" cssStyle="color: red;"/>
 						</div>
 					
-				</div>		
+				</div>		 
 				
 				<div class="form-group">
 					<label class="label" for="receiptImage"><spring:message code="payment.receiptImage" /></label>
@@ -72,7 +72,8 @@
 							<form:errors path="receiptImage" cssStyle="color: red;"/>
 						</div>
 					
-				</div>			
+				</div>	
+					
 				<div class="form-group">
 					<div class="button-container">
 						<input type="submit" id="btnAdd" class="btn btn-primary" value ="<spring:message code='payment.add' />"/>

@@ -47,7 +47,7 @@ public class PaymentController {
 			
 			Payment savedPayment = paymentService.save(payment);				
 
-			MultipartFile image = payment.getRecieptImage();
+			MultipartFile image = payment.getReceiptImage();
 			
 			String rootDirectory = request.getSession().getServletContext().getRealPath("/");
 			

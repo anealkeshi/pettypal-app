@@ -1,17 +1,17 @@
 package com.pettypal.domain;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
-
-import com.pettypal.domain.converters.LocalDateConverter;
 
 @Entity(name = "payment")
 public class Payment extends BaseEntityAudit {
@@ -30,13 +30,15 @@ public class Payment extends BaseEntityAudit {
 	private int numberOfFriends;
 	
 	@Transient
-	private MultipartFile recieptImage;
+	private MultipartFile receiptImage;
 
 	@OneToMany(mappedBy = "payment")	
 	private List<UserPayment> userPayments;
 
-	@Convert(converter = LocalDateConverter.class)
-	private LocalDateTime paymentDate;
+	@NotNull
+	@DateTimeFormat(pattern="MM/dd/yyyy")
+	//@Convert(converter = LocalDateConverter.class)
+	private Date paymentDate;
 
 	public String getDescription() {
 		return description;
@@ -70,11 +72,11 @@ public class Payment extends BaseEntityAudit {
 		this.tip = tip;
 	}
 
-	public LocalDateTime getPaymentDate() {
+	public Date getPaymentDate() {
 		return paymentDate;
 	}
 
-	public void setPaymentDate(LocalDateTime paymentDate) {
+	public void setPaymentDate(Date paymentDate) {
 		this.paymentDate = paymentDate;
 	}
 
@@ -102,12 +104,12 @@ public class Payment extends BaseEntityAudit {
 		this.numberOfFriends = numberOfFriends;
 	}
 
-	public MultipartFile getRecieptImage() {
-		return recieptImage;
+	public MultipartFile getReceiptImage() {
+		return receiptImage;
 	}
 
-	public void setRecieptImage(MultipartFile recieptImage) {
-		this.recieptImage = recieptImage;
+	public void setReceiptImage(MultipartFile recieptImage) {
+		this.receiptImage = recieptImage;
 	}
 
 }
