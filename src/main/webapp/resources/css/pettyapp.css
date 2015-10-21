@@ -154,13 +154,13 @@ body {
 
 .label
 {
-	width:150ppx;
+	width:150px;
 	padding:10px;
-	float:right;
+	text-align:right;
 	
 }
 .data
 {
 	padding:10px;
-	text:align:left;
+	text-align:left;
 }
