@@ -15,4 +15,6 @@ public interface UserRepository extends CrudRepository<User, Long> {
 	@Query("SELECT u FROM user u WHERE u.firstName LIKE %:name% OR u.lastName LIKE %:name%")
 	List<User> searchUserByName(@Param("name") String name);
 
+//	@Query("SELECT u FROM user u, friendship f WHERE (u.id=:id AND f.firstUser.id=u.id) OR (u.id=:id AND f.secondUser.id=u.id)")
+//	List<User> GetFriendList(@Param("id") Long id);
 }
