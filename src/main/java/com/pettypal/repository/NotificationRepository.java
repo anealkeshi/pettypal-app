@@ -16,4 +16,7 @@ public interface NotificationRepository extends CrudRepository<Notification, Lon
 	@Query("SELECT n FROM notification n WHERE n.type = :type")
 	List<Notification> findNotificationsByType(@Param("type") NotificationType type);
 
+	@Query("SELECT n FROM notification n WHERE n.initiator.id = :id")
+	List<Notification> findNotificationsByUser(@Param("id") Long id);
+
 }
