@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.pettypal.domain.Payment;
+import com.pettypal.exception.UnableToUploadImageException;
 import com.pettypal.service.PaymentService;
 
 @Controller
@@ -58,7 +59,7 @@ public class PaymentController {
 					image.transferTo(new File(rootDirectory + "\\resources\\images\\"+ savedPayment.getId()+".png"));
 				}
 				catch(Exception e){
-					throw new RuntimeException("Image upload failed", e);
+					throw new UnableToUploadImageException("Image upload failed.");
 				}
 			}
 						
