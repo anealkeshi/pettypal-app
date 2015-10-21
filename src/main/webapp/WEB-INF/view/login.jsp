@@ -4,41 +4,34 @@
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet"	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Products</title>
 </head>
 <body>
-	<section>
-		<div class="jumbotron">
-			<div class="container">
-				<h1>Welcome Kimosabe!! </h1>
-			</div>
-		</div>
-	</section>
-<div class="container">
-    <div class="row">
-		<div class="col-md-4 col-md-offset-4">
-    		<div class="panel panel-default">
-			  	<div class="panel-heading">
-			    	<h3 class="panel-title">Please sign in</h3>
+<div style="text-align: center; padding:20px; width: 100px; margin:auto;">
+    <div>
+		<div >
+    		<div >
+			  	<div>
+			    	<h3>Please sign in</h3>
+			    	<br/>
 			 	</div>
-			  	<div class="panel-body">
+			  	<div  >
 			  	<c:if test="${not empty error}">
-					<div class="alert alert-danger">
+					<div style="color:red">
 						<spring:message code="AbstractUserDetailsAuthenticationProvider.badCredentials"/><br />
 					</div>
 				</c:if>
 			    	<form action="<spring:url value="/postLogin"></spring:url>" method="post">
                     <fieldset>
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> 
-			    	  	<div class="form-group">
-			    		    <input class="form:input-large" placeholder="User Name" name='username' type="text">
+			    	  	<div>
+			    		    <input placeholder="User Name" name='username' type="text">
 			    		</div>
-			    		<div class="form-group">
-			    			<input class=" form:input-large" placeholder="Password" name='password'  type="password" value="">
+			    		<div >
+			    			<input placeholder="Password" name='password'  type="password" value="">
 			    		</div>
-			    		<input class="btn btn-lg btn-success btn-mini" type="submit" value="Login">
+			    		<div style="text-align: right"><input type="submit" value="Login"></div>
 			    	</fieldset>
 			      	</form>
 			    </div>

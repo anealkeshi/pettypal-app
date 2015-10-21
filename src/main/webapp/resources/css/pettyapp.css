@@ -22,10 +22,23 @@ article, aside, details, figcaption, figure, footer, header, hgroup,
 
 body {
 	line-height: 1;
+	
 }
 
 ol, ul {
 	list-style: none;
+}
+
+li {display: inline;}
+
+#menu ul
+{
+	
+}
+
+#menu ul li 
+{
+    overflow:auto;
 }
 
 blockquote, q {
@@ -57,14 +70,15 @@ body {
 
 .navigation li {
 	float: left;
+	
 }
 
 .navigation a:link, .navigation a:visited {
 	display: block;
 	width: 120px;
 	font-weight: bold;
-	color: #FFFFFF;
-	background-color: #98bf21;
+	color: #000;
+	background-color: #A0A0A0 ;
 	text-align: center;
 	padding: 4px;
 	text-decoration: none;
@@ -72,7 +86,8 @@ body {
 }
 
 .navigation a:hover, .navigation a:active {
-	background-color: #7A991A;
+	background-color: #202020;
+	color:white;
 }
 
 /** Navigation Css End **/
@@ -84,26 +99,33 @@ body {
 
 /** Header Css End **/
 .container {
-	background-color: gray;
+	background-color: #f5f5f5;
 	width: 1024px;
 	display: table;
 	margin: 0 auto;
 }
 
 .header {
-	background-color: red;
+	height:50px;
+	padding:10px;
+	background-color: #33CC33;
 }
 
 .footer {
-	background-color: blue;
+	padding : 10px;
+	background-color:#D0D0D0;
+	text-align: center;
+	
 }
 
 .content {
-	background-color: aqua;
+	background-color: white;
+	min-height: 600px;
+	border:1px gray;
 }
 
 .navigation {
-	background-color: lime;
+	background-color: #f5f5f5;
 }
 
 .placeholder {

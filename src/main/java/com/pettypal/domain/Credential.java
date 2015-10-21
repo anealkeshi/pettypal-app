@@ -8,10 +8,10 @@ public class Credential extends BaseEntityAudit {
 
 	private static final long serialVersionUID = 2224529120903442281L;
 
-	@Size(min = 5, max = 20, message = "{0} size should between {1} and {2}")
+	@Size(min = 5, max = 20, message = "{Size.name}")
 	private String username;
 
-	@Size(min = 5, max = 20, message = "{0} size should between {1} and {2}")
+	@Size(min = 5, max = 20, message = "{Size.name}")
 	private String password;
 
 
