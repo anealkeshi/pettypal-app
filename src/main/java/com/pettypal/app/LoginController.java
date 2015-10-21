@@ -33,8 +33,4 @@ public class LoginController {
  		return "redirect:/welcome";
  	}
 	
-//	@RequestMapping(value="/error-forbidden", method = RequestMethod.POST)
-//	public String errorPage(Model model) {
-//		return "error-forbidden";
-// 	}
 }

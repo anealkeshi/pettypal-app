@@ -1,18 +1,27 @@
 package com.pettypal.domain;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
+import javax.validation.Valid;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.pettypal.domain.converters.LocalDateConverter;
 
@@ -22,9 +31,11 @@ public class User extends BaseEntityAudit {
 	private static final long serialVersionUID = -4200665527938734620L;
 
 	@NotEmpty
+	@Size(min=4,max=20, message="{Size.name}")
 	private String firstName;
 
 	@NotEmpty
+	@Size(min=4,max=20, message="{Size.name}")
 	private String lastName;
 
 	@NotEmpty
@@ -34,13 +45,24 @@ public class User extends BaseEntityAudit {
 	@Email
 	private String email;
 
-	@Past
 	@Convert(converter = LocalDateConverter.class)
 	private LocalDateTime birthDate;
 
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@Valid
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "credential_id", referencedColumnName = "id")
 	private Credential credential;
+	
+	@Transient
+	private MultipartFile userImage;
+
+	public MultipartFile getUserImage() {
+		return userImage;
+	}
+
+	public void setUserImage(MultipartFile userImage) {
+		this.userImage = userImage;
+	}
 
 	public String getFirstName() {
 		return firstName;
@@ -80,6 +102,14 @@ public class User extends BaseEntityAudit {
 
 	public void setBirthDate(LocalDateTime birthDate) {
 		this.birthDate = birthDate;
+	}
+
+	public Credential getCredential() {
+		return credential;
+	}
+
+	public void setCredential(Credential credential) {
+		this.credential = credential;
 	}
 
 }

@@ -5,19 +5,19 @@ import java.util.List;
 import com.pettypal.domain.User;
 
 public interface UserService {
-	
+
 	/**
 	 * 
 	 * @param user
 	 */
-	public void save(User user);
-	
+	public User save(User user);
+
 	/**
 	 * 
 	 * @return
 	 */
 	public List<User> getAllUsers();
-	
+
 	/**
 	 * 
 	 * @param id
@@ -26,33 +26,28 @@ public interface UserService {
 	public User getUser(long id);
 	
 	/**
-	 * Send a friend request
-	 * @param userId
-	 */
-	public void requestFriend(long senderId, long recieverId);
-	
-	/**
 	 * Search users by name
-	 * @param name Name of user
+	 * 
+	 * @param name
+	 *            Name of user
 	 * @return A list of users matching the searched name
 	 */
 	public List<User> findUsersByName(String name);
-	
-	public List<User> findFriendsByName(long userId,String name);
-	
+
 	/**
-	 * Get friends' list
-	 * @return A list of the user's friends
+	 * Search Users by firstName, lastName, username or email
+	 * 
+	 * @param nameOrUsernameOrEmail
+	 * @return List of {@link User}
 	 */
-	public List<User> getFriends(long userId);
-	
-	
+	List<User> searchUserByNameOrUsernameOrEmail(String nameOrUsernameOrEmail);
+
 	/**
-	 * Accept a friend request
-	 * @param userId
-	 * @return The newly added friend user object.
+	 * Get {@link User} by username
+	 * 
+	 * @param username
+	 * @return {@link User}
 	 */
-	public User acceptFriend(long userId, long notificationId);
-	
+	User getUserByUsername(String username);
 
 }

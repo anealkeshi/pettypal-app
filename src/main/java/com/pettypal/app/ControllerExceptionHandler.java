@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.pettypal.exception.UnableToUploadImageException;
+
 @Component
 @ControllerAdvice
 public class ControllerExceptionHandler {
@@ -25,7 +27,15 @@ public class ControllerExceptionHandler {
 	        return  "error-forbidden" ;
 	    }
 	  
-	   // @ExceptionHandler(value = Exception.class)
+	  @ExceptionHandler(UnableToUploadImageException.class)
+		public ModelAndView handleError(HttpServletRequest req, UnableToUploadImageException exception) {
+			 ModelAndView mav = new ModelAndView();
+			 mav.addObject("unableToUpload", exception.getFullMessage());
+			 mav.setViewName("UnableToUploadImage");
+			 return mav;
+		}
+	  
+	    /*@ExceptionHandler(value = Exception.class)
 	    public ModelAndView defaultErrorHandler(HttpServletRequest req, Exception e) throws Exception {
 	        // If the exception is annotated with @ResponseStatus rethrow it and let
 	        // the framework handle it - like the OrderNotFoundException example
@@ -40,6 +50,6 @@ public class ControllerExceptionHandler {
 	        mav.addObject("url", req.getRequestURL());
 	        mav.setViewName(DEFAULT_ERROR_VIEW);
 	        return mav;
-	    }
+	    }*/
 
 }

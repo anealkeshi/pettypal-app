@@ -8,7 +8,6 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Size;
 
 /**
  * Base Entity Audit
@@ -23,16 +22,14 @@ public abstract class BaseEntityAudit extends BaseEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdAt;
 
-	//@Size(max = 20)
-	@Column(name = "created_by", length = 20)
+	@Column(name = "created_by")
 	private long createdBy;
 
 	@Column(name = "updated_at")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updatedAt;
 
-	//@Size(max = 20)
-	@Column(name = "updated_by", length = 20)
+	@Column(name = "updated_by")
 	private long updatedBy;
 
 	public Date getCreatedAt() {
