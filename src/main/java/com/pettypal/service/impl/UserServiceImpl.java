@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.pettypal.domain.User;
 import com.pettypal.repository.UserRepository;
+import com.pettypal.service.NotificationService;
 import com.pettypal.service.UserService;
 
 @Service
@@ -17,19 +18,12 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRepository userRepository;
 
-	public void requestFriend(long userId) {
-		// TODO Auto-generated method stub
-
-	}
+	@Autowired
+	private NotificationService notificationService;
 
 	public List<User> findUsersByName(String name) {
 
 		return userRepository.searchUserByName(name);
-	}
-
-	public List<User> getFriends(long userId) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	public User acceptFriend(long userId, long notificationId) {

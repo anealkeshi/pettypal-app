@@ -14,8 +14,14 @@ public class Notification extends BaseEntityAudit {
 	private static final long serialVersionUID = 4206477278367439001L;
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
-	@JoinColumn(name = "user_id", referencedColumnName = "id")
+	@JoinColumn(name = "sender_id", referencedColumnName = "id")
 	private User initiator;
+
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
+	@JoinColumn(name = "reciever_id", referencedColumnName = "id")
+	private User reciever;
+	
+	
 
 	@Enumerated(EnumType.STRING)
 	private NotificationType type;
@@ -35,6 +41,14 @@ public class Notification extends BaseEntityAudit {
 
 	public void setInitiator(User initiator) {
 		this.initiator = initiator;
+	}
+	
+	public User getReciever() {
+		return reciever;
+	}
+
+	public void setReciever(User reciever) {
+		this.reciever = reciever;
 	}
 
 	public NotificationType getType() {

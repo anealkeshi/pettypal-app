@@ -12,5 +12,7 @@ public interface NotificationService {
 	public Notification getNotificationById(long notificationId);
 	
 	public List<Notification> getNotificationListByType(NotificationType type);
+	
+	public List<Notification> getNotificationListByUser(Long id);
  
 }
