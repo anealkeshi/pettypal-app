@@ -29,7 +29,7 @@ public interface UserService {
 	 * Send a friend request
 	 * @param userId
 	 */
-	public void requestFriend(long userId);
+	public void requestFriend(long senderId, long recieverId);
 	
 	/**
 	 * Search users by name
@@ -38,11 +38,14 @@ public interface UserService {
 	 */
 	public List<User> findUsersByName(String name);
 	
+	public List<User> findFriendsByName(long userId,String name);
+	
 	/**
 	 * Get friends' list
 	 * @return A list of the user's friends
 	 */
 	public List<User> getFriends(long userId);
+	
 	
 	/**
 	 * Accept a friend request

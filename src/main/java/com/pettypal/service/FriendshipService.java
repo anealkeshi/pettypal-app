@@ -7,12 +7,12 @@ import com.pettypal.domain.User;
 
 public interface FriendshipService {
 	
-	public List<Friendship> getFriendships(User user);
+	public List<Friendship> getFriendships(long id);
 	
-	public List<User> getFriendsList(User user);
+	public List<User> getFriendsList(long id);
 	
 	public Friendship save(Friendship friendship);
 	
-	public Friendship getRelationship(User firstUser, User secondUser);
+	public Friendship getRelationship(long firstUser, long secondUser);
 
 }
