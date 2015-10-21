@@ -31,16 +31,6 @@ ol, ul {
 
 li {display: inline;}
 
-#menu ul
-{
-	
-}
-
-#menu ul li 
-{
-    overflow:auto;
-}
-
 blockquote, q {
 	quotes: none;
 }
@@ -70,7 +60,7 @@ body {
 
 .navigation li {
 	float: left;
-	
+	display: inline;
 }
 
 .navigation a:link, .navigation a:visited {
