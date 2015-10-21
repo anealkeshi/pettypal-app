@@ -35,7 +35,7 @@ public class User extends BaseEntityAudit {
 	private String lastName;
 
 	@NotEmpty
-	//@Pattern(regexp = "^\\d{3}-^\\d{3}-^\\d{4}", message = "{0} invalid input format")
+	@Pattern(regexp = "^\\d{3}-^\\d{3}-^\\d{4}", message = "{0} invalid input format")
 	private String phonenumber;
 
 	@Email

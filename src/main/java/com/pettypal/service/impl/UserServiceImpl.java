@@ -31,8 +31,8 @@ public class UserServiceImpl implements UserService {
 		return null;
 	}
 
-	public void save(User user) {
-		userRepository.save(user);
+	public User save(User user) {
+		return userRepository.save(user);
 
 	}
 

@@ -1,5 +1,7 @@
 package com.pettypal.app;
 
+import java.io.File;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -8,6 +10,8 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +21,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.pettypal.domain.User;
 import com.pettypal.service.UserService;
+
+import com.pettypal.exception.UnableToUploadImageException;
 
 @Controller
 public class PettypalApp {
@@ -52,13 +58,35 @@ public class PettypalApp {
 	}
 	
 	@RequestMapping(value = "/Registration", method= RequestMethod.POST)
-	public String SaveUser(@Valid @ModelAttribute("newUser") User user, BindingResult result) throws Exception {
+	public String SaveUser(@Valid @ModelAttribute("newUser") User user, BindingResult result ,Model model, HttpServletRequest request) {
 
 		
 		if(result.hasErrors()) return "registration";
 		
+		 String[] suppressedFields = result.getSuppressedFields();
+		 if (suppressedFields.length > 0) {
+		 throw new RuntimeException("Attempt to bind fields that haven't been allowed in initBinder(): "
+		 + StringUtils.addStringToArray(suppressedFields, ", "));
+		 }
+		 
+		User saveduser = userService.save(user);
 		
-		//userService.save(user);
+		MultipartFile userImage = user.getUserImage();
+		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+			
+		//isEmpty means file exists BUT NO Content
+			if (userImage!=null && !userImage.isEmpty()) {
+		       try {
+		    	   
+		    	   
+		    	   userImage.transferTo(new File(rootDirectory+"/resources/images/"+ saveduser.getId() + ".png"));
+		      
+		      	System.out.println("Image moved successfully");
+		      	
+		       } catch (Exception e) {
+				throw new UnableToUploadImageException(null);
+		   }
+		   }
 		return "redirect:/welcome";
 	}
 
