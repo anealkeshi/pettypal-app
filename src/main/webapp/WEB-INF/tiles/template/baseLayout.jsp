@@ -26,9 +26,9 @@
 			<tiles:insertAttribute name="heading" />
 		</div>
 		<div class="navigation">
-			<ul>
+			<!-- <ul> -->
 				<tiles:insertAttribute name="navigation" />
-			</ul>
+			<!-- </ul> -->
 		</div>
 
 		<div class="content">

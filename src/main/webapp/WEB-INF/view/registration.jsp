@@ -37,19 +37,49 @@
 					</div>
 				</div>
 
+				<div>
+					<label for="email"><spring:message code="register.email.label"/></label>
+					<div >
+						<form:input id="email" path="email" type="text"/>
+						<form:errors path="email" cssStyle="color:red;"/>
+					</div>
+				</div>
 				
+				<div>
+					<label for="phonenumber"><spring:message code="register.phonenumber.label"/></label>
+					<div >
+						<form:input id="phonenumber" path="phonenumber" type="text"/>
+						<form:errors path="phonenumber" cssStyle="color:red;"/>
+					</div>
+				</div>
 				
-				<div class="form-group">
-					<label class="control-label col-lg-2" for="productImage"><spring:message code="addProduct.form.productImage.label"/></label>
-					<div class="col-lg-10">
-						<form:input id="productImage" path="productImage" type="file" />
+				<div>
+					<label for="userImage"><spring:message code="register.userimage.label"/></label>
+					<div>
+						<form:input id="userImage" path="userImage" type="file" />
+					</div>
+				</div>
+				
+				<div>
+					<label for="credential.username"><spring:message code="register.credential.username.label"/></label>
+					<div >
+						<form:input id="credential.username" path="credential.username" type="text"/>
+						<form:errors path="credential.username" cssStyle="color:red;"/>
+					</div>
+				</div>
+				
+				<div>
+					<label for="credential.password"><spring:message code="register.credential.password.label"/></label>
+					<div >
+						<form:input id="credential.password" path="credential.password" type="text"/>
+						<form:errors path="credential.password" cssStyle="color:red;"/>
 					</div>
 				</div>
 
 
 				<div>
 					<div >
-						<input type="submit" id="btnAdd" value ="Register"/>
+						<input type="submit" id="btnAdd" value ="<spring:message code="register.add.btn"/>"/>
 					</div>
 				</div>
 				
