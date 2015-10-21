@@ -14,7 +14,7 @@
 	</div>
 	
 	<p> <security:authorize access="isAuthenticated()">
-  					Welcome <%--  <security:authentication property="principal.username" /> --%>
+  					Welcome username : <%--  <security:authentication property="username" />  --%>
   					
   					<br/>
   					<a href='<spring:url value="/doLogout"></spring:url>'>Logout</a>

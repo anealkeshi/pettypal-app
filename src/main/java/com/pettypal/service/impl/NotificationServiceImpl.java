@@ -31,4 +31,9 @@ public class NotificationServiceImpl implements NotificationService {
 		return (List<Notification>) notificationRepository.findNotificationsByType(type);
 	}
 
+	public List<Notification> getNotificationListByUser(Long id) {
+		
+		return (List<Notification>) notificationRepository.findNotificationsByUser(id);
+	}
+
 }
