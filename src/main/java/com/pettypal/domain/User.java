@@ -13,8 +13,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
+import javax.validation.Valid;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlTransient;
 
 import org.hibernate.validator.constraints.Email;
@@ -29,9 +31,11 @@ public class User extends BaseEntityAudit {
 	private static final long serialVersionUID = -4200665527938734620L;
 
 	@NotEmpty
+	@Size(min=4,max=20, message="{Size.name}")
 	private String firstName;
 
 	@NotEmpty
+	@Size(min=4,max=20, message="{Size.name}")
 	private String lastName;
 
 	@NotEmpty
@@ -44,6 +48,7 @@ public class User extends BaseEntityAudit {
 	@Convert(converter = LocalDateConverter.class)
 	private LocalDateTime birthDate;
 
+	@Valid
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "credential_id", referencedColumnName = "id")
 	private Credential credential;

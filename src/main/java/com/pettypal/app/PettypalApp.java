@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.pettypal.domain.User;
 import com.pettypal.service.UserService;
@@ -58,7 +59,7 @@ public class PettypalApp {
 	}
 	
 	@RequestMapping(value = "/Registration", method= RequestMethod.POST)
-	public String SaveUser(@Valid @ModelAttribute("newUser") User user, BindingResult result ,Model model, HttpServletRequest request) {
+	public String SaveUser(@Valid @ModelAttribute("newUser") User user, BindingResult result , HttpServletRequest request, RedirectAttributes redirectAttribute) {
 
 		
 		if(result.hasErrors()) return "registration";
@@ -87,6 +88,8 @@ public class PettypalApp {
 				throw new UnableToUploadImageException(null);
 		   }
 		   }
+			
+		redirectAttribute.addFlashAttribute("savedUser",saveduser);
 		return "redirect:/welcome";
 	}
 

@@ -30,8 +30,8 @@
 
 	<bean id="messageSource"
 		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-		<property name="basenames"
-			value="classpath:lang/lang,classpath:error/errorMessages" />
+		<property name="basename"
+			value="classpath:message/messages" />
 		<property name="defaultEncoding" value="UTF-8" />
 	</bean>
 
