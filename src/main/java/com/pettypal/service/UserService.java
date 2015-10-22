@@ -2,6 +2,7 @@ package com.pettypal.service;
 
 import java.util.List;
 
+import com.pettypal.custom.NoSuchUserException;
 import com.pettypal.domain.User;
 
 public interface UserService {
@@ -24,7 +25,7 @@ public interface UserService {
 	 * @return
 	 */
 	public User getUser(long id);
-	
+
 	/**
 	 * Search users by name
 	 * 
@@ -49,5 +50,15 @@ public interface UserService {
 	 * @return {@link User}
 	 */
 	User getUserByUsername(String username);
+
+	/**
+	 * 
+	 * Get user by email
+	 * 
+	 * @param email
+	 * @return
+	 * @throws NoSuchUserException 
+	 */
+	User getUserByEmail(String email) throws NoSuchUserException;
 
 }

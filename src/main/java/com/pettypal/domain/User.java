@@ -53,7 +53,7 @@ public class User extends BaseEntityAudit {
 	private LocalDateTime birthDate;
 
 	@Valid
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "credential_id", referencedColumnName = "id")
 	private Credential credential;
 	
