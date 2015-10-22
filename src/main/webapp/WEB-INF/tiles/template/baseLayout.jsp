@@ -12,6 +12,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <c:url value="/css/pettyapp.css" var="appCss" />
 <link rel="stylesheet" href="${appCss}">
+<script src="<c:url value="/js/jquery-2.1.4.js" />"></script>
+<script src="<c:url value="/js/pettypal.js" />"></script>
 
 <title><tiles:insertAttribute name="title" /></title>
 

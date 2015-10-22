@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.pettypal.domain.User;
+import com.pettypal.exception.NoSuchUserException;
 import com.pettypal.repository.UserRepository;
 import com.pettypal.service.NotificationService;
 import com.pettypal.service.UserService;
@@ -53,6 +54,15 @@ public class UserServiceImpl implements UserService {
 
 	public User getUserByUsername(String username) {
 		return userRepository.findUserByUsername(username);
+	}
+
+	public User getUserByEmail(String email) throws NoSuchUserException {
+		User user = userRepository.findUserByEmail(email);
+		if (user != null) {
+			return user;
+		} else {
+			throw new NoSuchUserException("User not found with provided email: " + email);
+		}
 	}
 
 }

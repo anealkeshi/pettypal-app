@@ -1,10 +1,11 @@
 package com.pettypal.domain;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
@@ -32,7 +33,7 @@ public class Payment extends BaseEntityAudit {
 	@Transient
 	private MultipartFile receiptImage;
 
-	@OneToMany(mappedBy = "payment")	
+	@OneToMany(mappedBy = "payment", fetch = FetchType.EAGER, cascade = CascadeType.ALL)	
 	private List<UserPayment> userPayments;
 
 	@NotNull

@@ -7,6 +7,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 @Entity(name = "user_payment")
 public class UserPayment extends BaseEntityAudit {
@@ -17,7 +18,7 @@ public class UserPayment extends BaseEntityAudit {
 	@JoinColumn(name = "user_id", referencedColumnName = "id")
 	private User user;
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
 	@JoinColumn(name = "payment_id", referencedColumnName = "id")
 	private Payment payment;
 
@@ -57,6 +58,28 @@ public class UserPayment extends BaseEntityAudit {
 
 	public void setPayedAmount(double payedAmount) {
 		this.payedAmount = payedAmount;
+	}
+
+	@Transient
+	private String name;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Transient
+	private long userId;
+
+	public long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
 
 }
