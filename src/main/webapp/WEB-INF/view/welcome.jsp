@@ -13,11 +13,23 @@
 
 	<security:authorize access="isAuthenticated()">
 					
-					<div id="dashboard">
+					<div id="dashboard" style="padding:100px;">
 					
 					
+					<div>
+					You Owe for your Friends: ${payable}
+					<br/>
+					</div>
 					
+					<div>
+					You Owed from your Friends: ${recievable}
+					<br/>
+					</div>
 					
+					<div>
+					Last Balance: ${total}
+					<br/>
+					</div>
 					</div>
   					
 

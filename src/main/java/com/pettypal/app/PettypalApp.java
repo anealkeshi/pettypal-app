@@ -2,6 +2,7 @@ package com.pettypal.app;
 
 import java.io.File;
 import java.security.Principal;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -18,16 +19,16 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.pettypal.domain.User;
+import com.pettypal.domain.UserPayment;
+import com.pettypal.exception.UnableToUploadImageException;
 import com.pettypal.service.NotificationService;
 import com.pettypal.service.PaymentService;
+import com.pettypal.service.UserPaymentService;
 import com.pettypal.service.UserService;
-
-import com.pettypal.exception.UnableToUploadImageException;
 
 @Controller
 public class PettypalApp {
@@ -42,6 +43,8 @@ public class PettypalApp {
 	NotificationService notificationService;
 	@Autowired
 	PaymentService paymentService;
+	@Autowired
+	UserPaymentService userPaymentService;
 	
 	@RequestMapping(value = {"/","/welcome"}, method=RequestMethod.GET)
 	public String welcome(Model model,Principal userPrincipal) {
@@ -49,8 +52,23 @@ public class PettypalApp {
 		if(userPrincipal!=null)
 		{
 			User user = userService.getUserByUsername(userPrincipal.getName());
-			model.addAttribute("notificationList", notificationService.getNotificationListByUser(user.getId()));
-			model.addAttribute("payments");
+			
+			List<UserPayment> uPList = userPaymentService.getByUserID(user.getId());
+			
+			System.out.println(uPList.size());
+			double shareAmountTotal = 0;
+			double payAmountTotal = 0;
+			for (UserPayment userPayment : uPList) {
+				shareAmountTotal += userPayment.getShareAmount();
+				payAmountTotal += userPayment.getPayedAmount();
+			}
+			
+			model.addAttribute("recievable",payAmountTotal);
+			model.addAttribute("payable", shareAmountTotal);
+			model.addAttribute("total", shareAmountTotal - payAmountTotal);
+			
+//			model.addAttribute("notificationList", notificationService.getNotificationListByUser(user.getId()));
+	System.out.println(payAmountTotal);
 		}
 		
 		return "welcome";
