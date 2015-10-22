@@ -29,7 +29,6 @@ ol, ul {
 	list-style: none;
 }
 
-li {display: inline;}
 
 blockquote, q {
 	quotes: none;
@@ -59,7 +58,7 @@ body {
 }
 
 .navigation {
-	background-color: #A0A0A0;
+	background-color: #339900;
 }
 
 .navigation li {
@@ -71,8 +70,8 @@ body {
 	display: block;
 	
 	font-weight: bold;
-	color: #000;
-	background-color: #A0A0A0 ;
+	color: #fff;
+	background-color: #339900 ;
 	text-align: center;
 	padding: 15px;
 	text-decoration: none;
@@ -80,8 +79,8 @@ body {
 }
 
 .navigation a:hover, .navigation a:active {
-	background-color: #202020;
-	color:white;
+	background-color: #33FF66;
+	color:#202020;
 }
 
 /** Navigation Css End **/
@@ -93,13 +92,12 @@ body {
 
 .language a:hover, .language a:active
 {
-	color:#D0D0D0;
+	color:#339900;
 	text-decoration: underline;
 }
 
 .language a:link, .language a:visited
 {
-	color: #000;
 	text-align: center;
 	padding: 10px;
 	text-decoration: none;

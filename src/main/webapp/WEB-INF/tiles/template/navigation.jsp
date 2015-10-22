@@ -2,8 +2,8 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 
 <ul>
-	<li><a href="<spring:url value="/welcome"/>">Home</a></li>
-	<li><a href="<spring:url value="/showMessage"/>">Show Message</a></li>
-	<li><a href="<spring:url value="/payment"/>">Payment Request</a></li>
+	<li><a href="<spring:url value="/welcome"/>"><spring:message code="link.home"> </spring:message></a></li>
+	<li><a href="<spring:url value="/showMessage"/>"><spring:message code="link.payment"> </spring:message></a></li>
+	<li><a href="<spring:url value="/payment"/>"><spring:message code="link.create.payment"> </spring:message></a></li>
 	
 </ul>
