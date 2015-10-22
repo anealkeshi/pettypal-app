@@ -11,7 +11,7 @@
 
 
 	<context:component-scan base-package="com.pettypal.app" />
-	<mvc:annotation-driven validator="validator" />
+	<mvc:annotation-driven validator="validator" conversion-service="conversionService"/>
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -69,4 +69,14 @@
 		<property name="maxUploadSize" value="10240000" />
 	</bean>
 	
+		<bean id="conversionService"
+		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<property name="formatters">
+			<set>
+				<bean class="com.pettypal.formatter.PhoneFormatter">
+				</bean>
+
+			</set>
+		</property>
+	</bean>
 </beans>

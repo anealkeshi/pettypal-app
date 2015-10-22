@@ -8,6 +8,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Convert;
+import javax.persistence.Converter;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -26,7 +27,9 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.pettypal.custom.PhoneConverter;
 import com.pettypal.domain.converters.LocalDateConverter;
+import com.pettypal.formatter.PhoneFormat;
 
 @Entity(name = "user")
 public class User extends BaseEntityAudit {
@@ -41,9 +44,10 @@ public class User extends BaseEntityAudit {
 	@Size(min=4,max=20, message="{Size.name}")
 	private String lastName;
 
-	@NotEmpty
-	@Pattern(regexp = "^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$", message = "{0} invalid input format")
-	private String phonenumber;
+	@NotNull
+	@Convert(converter=PhoneConverter.class)
+	@PhoneFormat(message = "{phone.error}")
+	private Phone phonenumber;
 
 	@Email
 	private String email;
@@ -85,11 +89,11 @@ public class User extends BaseEntityAudit {
 		this.lastName = lastName;
 	}
 
-	public String getPhonenumber() {
+	public Phone getPhonenumber() {
 		return phonenumber;
 	}
 
-	public void setPhonenumber(String phonenumber) {
+	public void setPhonenumber(Phone phonenumber) {
 		this.phonenumber = phonenumber;
 	}
 

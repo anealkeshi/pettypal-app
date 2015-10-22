@@ -1,6 +1,7 @@
 package com.pettypal.app;
 
 import java.io.File;
+import java.security.Principal;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -22,6 +23,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.pettypal.domain.User;
+import com.pettypal.service.NotificationService;
+import com.pettypal.service.PaymentService;
 import com.pettypal.service.UserService;
 
 import com.pettypal.exception.UnableToUploadImageException;
@@ -35,10 +38,21 @@ public class PettypalApp {
 	
 	@Autowired
 	UserService userService;
+	@Autowired
+	NotificationService notificationService;
+	@Autowired
+	PaymentService paymentService;
 	
-	@RequestMapping(value = {"/","/welcome"})
-	public String welcome() {
-		logger.info("welcome page shown");
+	@RequestMapping(value = {"/","/welcome"}, method=RequestMethod.GET)
+	public String welcome(Model model,Principal userPrincipal) {
+		//check user logged in
+		if(userPrincipal!=null)
+		{
+			User user = userService.getUserByUsername(userPrincipal.getName());
+			model.addAttribute("notificationList", notificationService.getNotificationListByUser(user.getId()));
+			model.addAttribute("payments");
+		}
+		
 		return "welcome";
 	}
 	
@@ -55,11 +69,7 @@ public class PettypalApp {
 	@RequestMapping(value = "/Registration", method= RequestMethod.GET)
 	public String register(@ModelAttribute("newUser") User user) {
 		
-		System.out.println(path +"=======");
-		
 		return "registration";
-		
-		
 	}
 	
 	@RequestMapping(value = "/Registration", method= RequestMethod.POST)
@@ -86,15 +96,16 @@ public class PettypalApp {
 		    	   
 		    	   userImage.transferTo(new File(path+ saveduser.getId() + ".png"));
 		      
-		      	System.out.println("Image moved successfully");
+		      	logger.info("Image moved succesfully to " + path);
 		      	
 		       } catch (Exception e) {
+		    	   logger.info(e.getMessage());
 				throw new UnableToUploadImageException(null);
 		   }
 		   }
 			
-		redirectAttribute.addFlashAttribute("savedUser",saveduser);
-		return "redirect:/welcome";
+		//redirectAttribute.addFlashAttribute("savedUser",saveduser);
+		return "redirect:/login";
 	}
 
 }
