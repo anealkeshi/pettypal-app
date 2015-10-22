@@ -18,7 +18,7 @@ public class UserPayment extends BaseEntityAudit {
 	@JoinColumn(name = "user_id", referencedColumnName = "id")
 	private User user;
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
 	@JoinColumn(name = "payment_id", referencedColumnName = "id")
 	private Payment payment;
 

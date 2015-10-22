@@ -29,6 +29,7 @@ import com.pettypal.domain.User;
 import com.pettypal.domain.UserPayment;
 import com.pettypal.exception.UnableToUploadImageException;
 import com.pettypal.service.PaymentService;
+import com.pettypal.service.UserPaymentService;
 import com.pettypal.service.UserService;
 
 @Controller
@@ -42,6 +43,9 @@ public class PaymentController {
 
 	@Autowired
 	private PaymentService paymentService;
+
+	@Autowired
+	private UserPaymentService usePaymentService;
 
 	@Value("${image.path}")
 	private String path;
@@ -87,11 +91,13 @@ public class PaymentController {
 	@RequestMapping(value = "/share", method = RequestMethod.GET)
 	public String getShareFrom(@ModelAttribute("payment") Payment payment, Model model, Principal userPrincipal) {
 
+		User currentUser = userService.getUserByUsername(userPrincipal.getName());
 		List<UserPayment> userPayments = new ArrayList<UserPayment>();
 		UserPayment userPayment = new UserPayment();
 		System.out.println(userPrincipal.getName());
 		userPayment.setUser(userService.getUserByUsername(userPrincipal.getName()));
 		userPayment.setName("Your Share");
+		userPayment.setUserId(currentUser.getId());
 		userPayment.setShareAmount(payment.getTotalAmount());
 		userPayments.add(userPayment);
 		for (int i = 0; i < payment.getNumberOfFriends(); i++) {
@@ -106,6 +112,18 @@ public class PaymentController {
 
 	@RequestMapping(value = "/share", method = RequestMethod.POST)
 	public String addUserPayment(@ModelAttribute("payment") Payment payment, Model model, Principal userPrincipal) {
+
+		List<UserPayment> payments = payment.getUserPayments();
+
+		User user;
+		for (UserPayment userPayment : payments) {
+			if (userPayment.getUserId() != 0) {
+				user = userService.getUser(userPayment.getUserId());
+				userPayment.setUser(user);
+				userPayment.setPayment(payment);
+				usePaymentService.save(userPayment);
+			}
+		}
 
 		return "redirect:/payment/request";
 
