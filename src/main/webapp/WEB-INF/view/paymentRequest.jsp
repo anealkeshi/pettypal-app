@@ -11,75 +11,91 @@
 				<legend><spring:message code="createPayment" /></legend>
 
 				<form:errors path="*" cssStyle="color: red;" element="div"/>
-				<div class="form-group">
-					<label class="form-label" for="description"><spring:message code="description" /></label>
-					<div class="form-input">
-						<form:input id="description" path="description" type="text" class="form:input-large"/>
-						<form:errors path="description" cssStyle="color: red;"/>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="form-label" for="paymentDate"><spring:message code="paymentDate" /></label>
-					<div class="form-input">
+				
+				<table>
+				
+				<tr>
+					<td class="label">
+						<label class="form-label" for="description"><spring:message code="description" /></label>
+					</td>
+						<td class="data">
+							<form:input id="description" path="description" type="text" class="form:input-large"/>
+							<form:errors path="description" cssStyle="color: red;"/>
+						</td>
+				</tr>
+				<tr>
+					<td class="label">
+						<label class="form-label" for="paymentDate"><spring:message code="paymentDate" /></label>
+					</td>
+					<td class="data">
 						<form:input id="paymentDate" path="paymentDate" type="text" class="form:input-large"/>
 						<form:errors path="paymentDate" cssStyle="color: red;"/>
-					</div>
-				</div>
-				<div class="form-group">
+					</td>
+				</tr>
+				<tr>
+				<td class="label">
 					<label class="control-label col-lg-2" for="totalAmount"><spring:message code="totalAmount" /></label>
+					</td>
 					
-						<div class="form-input">
+						<td class="data">
 							<form:input id="totalAmount" path="totalAmount" type="text" class="form:input-large"/>
 							<form:errors path="totalAmount" cssStyle="color: red;"/>
-						</div>
+						</td>
 					
-				</div>
-				<div class="form-group">
+				</tr>
+				<tr>
+				<td class="label">
 					<label class="label" for="tip"><spring:message code="tip" /></label>
+					</td>
 					
-						<div class="form-input">
+						<td class="data">
 							<form:input id="tip" path="tip" type="text" class="form:input-large"/>
 							<form:errors path="tip" cssStyle="color: red;"/>
-						</div>
+						</td>
 					
-				</div>
+				</tr>
 				
-				<div class="form-group">
+				<tr>
+				<td class="label">
 					<label class="label" for="tip"><spring:message code="tax" /></label>
+					</td>
 					
-						<div class="form-input">
+						<td class="data">
 							<form:input id="tax" path="tax" type="text" class="form:input-large"/>
 							<form:errors path="tax" cssStyle="color: red;"/>
-						</div>
+						</td>
 					
-				</div>
+				</tr>
 				
-				<div class="form-group">
+				<tr >
+				<td class="label">
 					<label class="label" for="numberOfFriends"><spring:message code="numberOfFriends" /></label>
-					
-						<div class="form-input">
+				</td>
+						<td class="data">
 							<form:input id="numberOfFriends" path="numberOfFriends" type="text" class="form:input-large"/>
 							<form:errors path="numberOfFriends" cssStyle="color: red;"/>
-						</div>
+						</td>
 					
-				</div>		 
+				</tr>		 
 				
-				<div class="form-group">
+				<tr>
+				<td class="label">
 					<label class="label" for="receiptImage"><spring:message code="payment.receiptImage" /></label>
-					
-						<div class="form-input">
+				</td>
+						<td class="data">
 							<form:input id="receiptImage" path="receiptImage" type="file" class="form:input-large"/>
 							<form:errors path="receiptImage" cssStyle="color: red;"/>
-						</div>
+						</td>
 					
-				</div>	
-					
-				<div class="form-group">
+				</tr>						
+				<tr>
+				<td colspan="2">
 					<div class="button-container">
 						<input type="submit" id="btnAdd" class="btn btn-primary" value ="<spring:message code='payment.add' />"/>
 					</div>
-				</div>
-				
+				</td>
+				</tr>
+				</table>
 			</fieldset>
 		</form:form>
 	</div>

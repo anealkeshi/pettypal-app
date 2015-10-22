@@ -1,6 +1,7 @@
 package com.pettypal.domain;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -50,7 +51,7 @@ public class User extends BaseEntityAudit {
 	@NotNull
  	@DateTimeFormat(pattern = "MM/dd/yyyy")
 	//@Convert(converter = LocalDateConverter.class)
-	private LocalDateTime birthDate;
+	private Date birthDate;
 
 	@Valid
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -100,11 +101,11 @@ public class User extends BaseEntityAudit {
 		this.email = email;
 	}
 
-	public LocalDateTime getBirthDate() {
+	public Date getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(LocalDateTime birthDate) {
+	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
 

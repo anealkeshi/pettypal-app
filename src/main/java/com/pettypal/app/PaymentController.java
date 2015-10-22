@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +27,7 @@ import com.pettypal.custom.NoSuchUserException;
 import com.pettypal.domain.Payment;
 import com.pettypal.domain.User;
 import com.pettypal.domain.UserPayment;
+import com.pettypal.exception.UnableToUploadImageException;
 import com.pettypal.service.PaymentService;
 import com.pettypal.service.UserService;
 
@@ -38,7 +40,11 @@ public class PaymentController {
 	@Autowired
 	private UserService userService;
 
+	@Autowired
 	private PaymentService paymentService;
+
+	@Value("${image.path}")
+	private String path;
 
 	@RequestMapping(value = { "", "/request" }, method = RequestMethod.GET)
 	public String request(@ModelAttribute("newPayment") Payment payment, Principal userPrincipal) {
@@ -63,9 +69,9 @@ public class PaymentController {
 
 			if (image != null && !image.isEmpty()) {
 				try {
-					image.transferTo(new File(rootDirectory + "\\resources\\images\\" + savedPayment.getId() + ".png"));
+					image.transferTo(new File(path + savedPayment.getId() + ".png"));
 				} catch (Exception e) {
-					throw new RuntimeException("Image upload failed", e);
+					throw new UnableToUploadImageException("Image upload failed.");
 				}
 			}
 

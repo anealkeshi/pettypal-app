@@ -29,17 +29,6 @@ ol, ul {
 	list-style: none;
 }
 
-li {display: inline;}
-
-#menu ul
-{
-	
-}
-
-#menu ul li 
-{
-    overflow:auto;
-}
 
 blockquote, q {
 	quotes: none;
@@ -57,7 +46,7 @@ table {
 
 /** Reset End **/
 body {
-	background-color: #F1F1F1;
+	background-color: #C0C0C0;
 }
 
 /** Navigation Css **/
@@ -68,26 +57,30 @@ body {
 	overflow: hidden;
 }
 
+.navigation {
+	background-color: #339900;
+}
+
 .navigation li {
 	float: left;
-	
+	display: inline;
 }
 
 .navigation a:link, .navigation a:visited {
 	display: block;
-	width: 120px;
+	
 	font-weight: bold;
-	color: #000;
-	background-color: #A0A0A0 ;
+	color: #fff;
+	background-color: #339900 ;
 	text-align: center;
-	padding: 4px;
+	padding: 15px;
 	text-decoration: none;
 	text-transform: uppercase;
 }
 
 .navigation a:hover, .navigation a:active {
-	background-color: #202020;
-	color:white;
+	background-color: #33FF66;
+	color:#202020;
 }
 
 /** Navigation Css End **/
@@ -97,6 +90,20 @@ body {
 	float: right;
 }
 
+.language a:hover, .language a:active
+{
+	color:#339900;
+	text-decoration: underline;
+}
+
+.language a:link, .language a:visited
+{
+	text-align: center;
+	padding: 10px;
+	text-decoration: none;
+	text-transform: uppercase;
+	
+}
 /** Header Css End **/
 .container {
 	background-color: #f5f5f5;
@@ -106,12 +113,20 @@ body {
 }
 
 .header {
-	height:50px;
+	height:100px;
 	padding:10px;
-	background-color: #33CC33;
+	background-color: #fff;
+}
+
+.head_content
+{
+	position: relative;
+	float:left;
+	width:300px
 }
 
 .footer {
+	height:60px;
 	padding : 10px;
 	background-color:#D0D0D0;
 	text-align: center;
@@ -119,14 +134,12 @@ body {
 }
 
 .content {
-	background-color: white;
+	background-color: #f5f5f5;
 	min-height: 600px;
 	border:1px gray;
 }
 
-.navigation {
-	background-color: #f5f5f5;
-}
+
 
 .placeholder {
 	width: 100px;
@@ -160,4 +173,23 @@ body {
 	border-right: 1px solid #333333;
 	border-bottom: 1px solid #333333;
 	border-left: 1px solid #CCCCCC;
+}
+
+.label
+{
+	width:150px;
+	padding:10px;
+	text-align:right;
+	
+}
+.data
+{
+	padding:10px;
+	text-align:left;
+}
+
+div.content .container
+{
+	padding-left; 10%;
+	width: auto;
 }

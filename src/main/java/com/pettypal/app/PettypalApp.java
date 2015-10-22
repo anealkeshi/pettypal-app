@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +29,9 @@ import com.pettypal.exception.UnableToUploadImageException;
 @Controller
 public class PettypalApp {
 	private static final Log logger = LogFactory.getLog(PettypalApp.class);
+	
+	@Value("${image.path}")
+	private String path;
 	
 	@Autowired
 	UserService userService;
@@ -51,7 +55,7 @@ public class PettypalApp {
 	@RequestMapping(value = "/Registration", method= RequestMethod.GET)
 	public String register(@ModelAttribute("newUser") User user) {
 		
-		System.out.println("coming");
+		System.out.println(path +"=======");
 		
 		return "registration";
 		
@@ -80,7 +84,7 @@ public class PettypalApp {
 		       try {
 		    	   
 		    	   
-		    	   userImage.transferTo(new File(rootDirectory+"/resources/images/"+ saveduser.getId() + ".png"));
+		    	   userImage.transferTo(new File(path+ saveduser.getId() + ".png"));
 		      
 		      	System.out.println("Image moved successfully");
 		      	
