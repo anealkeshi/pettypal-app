@@ -23,7 +23,8 @@
   				
 				</security:authorize>
 				<security:authorize access="isAnonymous()">
-  					<div style="color:#339900"><a href="<spring:url value="/Registration"></spring:url>"><spring:message code="register.add.btn"> </spring:message></a>
+  					<div style="color:#339900"><a href="<spring:url value="/Registration"></spring:url>"><spring:message code="register.add.btn"> </spring:message></a>|
+  					<a href="<spring:url value="/login"></spring:url>"><spring:message code="login.add.btn"> </spring:message></a>
   				</div>
 				</security:authorize>
 				</div>

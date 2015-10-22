@@ -125,7 +125,7 @@ public class PaymentController {
 			}
 		}
 
-		return "redirect:/payment/request";
+		return "redirect:/";
 
 	}
 

@@ -20,7 +20,7 @@ import com.pettypal.service.UserPaymentService;
 public class UserPaymentServiceImpl implements UserPaymentService {
 
 	@Autowired
-	UserPaymentRepository userpaymentRepository;
+	private UserPaymentRepository userpaymentRepository;
 
 	@PersistenceContext
 	private EntityManager em;
