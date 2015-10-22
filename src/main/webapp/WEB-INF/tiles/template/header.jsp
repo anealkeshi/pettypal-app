@@ -3,9 +3,9 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
-
-<div class="header_content">
 	<div class="head_content">
+	<a href="<spring:url value="/"></spring:url>"> <img src='<spring:url value="/images/cashlogo.png"></spring:url>' alt="PettyPal" height="100" width="200"> </a>
+	
 	</div>
 	
 	
@@ -29,5 +29,3 @@
 				</div>
 	</div>
 
-
-</div>
