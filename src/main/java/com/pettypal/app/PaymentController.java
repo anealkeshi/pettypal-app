@@ -69,8 +69,6 @@ public class PaymentController {
 
 			MultipartFile image = payment.getReceiptImage();
 
-			String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-
 			if (image != null && !image.isEmpty()) {
 				try {
 					image.transferTo(new File(path + savedPayment.getId() + ".png"));
@@ -82,7 +80,6 @@ public class PaymentController {
 			redirectAttributes.addFlashAttribute("savedPayment", savedPayment);
 			model.addAttribute("payment", savedPayment);
 			redirectAttributes.addAttribute("id", savedPayment.getId());
-			// return "paymentRequest";
 			return "redirect:/payment/share/";
 		}
 
@@ -94,8 +91,7 @@ public class PaymentController {
 		User currentUser = userService.getUserByUsername(userPrincipal.getName());
 		List<UserPayment> userPayments = new ArrayList<UserPayment>();
 		UserPayment userPayment = new UserPayment();
-		System.out.println(userPrincipal.getName());
-		userPayment.setUser(userService.getUserByUsername(userPrincipal.getName()));
+		userPayment.setUser(currentUser);
 		userPayment.setName("Your Share");
 		userPayment.setUserId(currentUser.getId());
 		userPayment.setShareAmount(payment.getTotalAmount());

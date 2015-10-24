@@ -33,7 +33,7 @@ public class Payment extends BaseEntityAudit {
 	@Transient
 	private MultipartFile receiptImage;
 
-	@OneToMany(mappedBy = "payment", fetch = FetchType.EAGER, cascade = CascadeType.ALL)	
+	@OneToMany(mappedBy = "payment", fetch = FetchType.LAZY, cascade = CascadeType.ALL)	
 	private List<UserPayment> userPayments;
 
 	@NotNull

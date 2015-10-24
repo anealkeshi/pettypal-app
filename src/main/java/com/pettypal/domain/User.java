@@ -1,26 +1,17 @@
 package com.pettypal.domain;
 
-import java.time.LocalDateTime;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Convert;
-import javax.persistence.Converter;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlTransient;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -28,7 +19,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.pettypal.custom.PhoneConverter;
-import com.pettypal.domain.converters.LocalDateConverter;
 import com.pettypal.formatter.PhoneFormat;
 
 @Entity(name = "user")
@@ -54,7 +44,6 @@ public class User extends BaseEntityAudit {
 	
 	@NotNull
  	@DateTimeFormat(pattern = "MM/dd/yyyy")
-	//@Convert(converter = LocalDateConverter.class)
 	private Date birthDate;
 
 	@Valid

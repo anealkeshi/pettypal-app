@@ -14,11 +14,11 @@ public class UserPayment extends BaseEntityAudit {
 
 	private static final long serialVersionUID = -6979135832669249512L;
 
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
 	@JoinColumn(name = "user_id", referencedColumnName = "id")
 	private User user;
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
 	@JoinColumn(name = "payment_id", referencedColumnName = "id")
 	private Payment payment;
 
