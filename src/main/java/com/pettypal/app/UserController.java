@@ -23,7 +23,6 @@ import com.pettypal.exception.UnableToUploadImageException;
 import com.pettypal.service.UserService;
 
 @Controller
-@RequestMapping("/user")
 public class UserController {
 
 	@Value("${image.path}")
